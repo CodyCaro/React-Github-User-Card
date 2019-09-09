@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import "./App.css";
+import "./components/Usercard.js";
+import Usercard from "./components/Usercard.js";
 
 class App extends React.Component {
   state = {
@@ -18,7 +20,11 @@ class App extends React.Component {
   }
 
   render() {
-    return <div className="App"></div>;
+    return (
+      <div className="App">
+        <Usercard myProfile={this.state.myProfile} />
+      </div>
+    );
   }
 }
 
