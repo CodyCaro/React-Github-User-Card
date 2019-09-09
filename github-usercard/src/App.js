@@ -1,8 +1,30 @@
 import React from "react";
 import axios from "axios";
 import "./App.css";
+import styled from "styled-components";
+
 import FollowerCard from "./components/FollowerCard";
 import Usercard from "./components/Usercard.js";
+
+const FlexCenter = styled.section`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+`;
+
+const H2 = ({ className, children }) => (
+  <h2 className={className}>{children}</h2>
+);
+
+const StyledH2 = styled(H2)`
+  border-bottom: solid black;
+  margin: 25px auto;
+  width: 10%;
+
+  &:first-child {
+    margin-top: 25px;
+  }
+`;
 
 class App extends React.Component {
   state = {
@@ -31,11 +53,16 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Usercard myProfile={this.state.myProfile} />
-        <h1>Followers</h1>
-        {this.state.myFollowers.map(follower => {
-          return <FollowerCard follower={follower} />;
-        })}
+        <StyledH2>My Profile</StyledH2>
+        <FlexCenter>
+          <Usercard myProfile={this.state.myProfile} />
+        </FlexCenter>
+        <StyledH2>Followers</StyledH2>
+        <FlexCenter>
+          {this.state.myFollowers.map(follower => {
+            return <FollowerCard follower={follower} />;
+          })}
+        </FlexCenter>
       </div>
     );
   }
