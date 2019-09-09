@@ -12,6 +12,11 @@ const FlexCenter = styled.section`
   margin-bottom: 25px;
 `;
 
+const FollowCardContainer = styled.section`
+  display: flex;
+  justify-content: center;
+`;
+
 const H2 = ({ className, children }) => (
   <h2 className={className}>{children}</h2>
 );
@@ -60,7 +65,11 @@ class App extends React.Component {
         <StyledH2>Followers</StyledH2>
         <FlexCenter>
           {this.state.myFollowers.map(follower => {
-            return <FollowerCard follower={follower} />;
+            return (
+              <FollowCardContainer>
+                <FollowerCard follower={follower} />
+              </FollowCardContainer>
+            );
           })}
         </FlexCenter>
       </div>
